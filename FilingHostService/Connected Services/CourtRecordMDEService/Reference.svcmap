@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6dad27c6-c9e5-4f97-a0c7-137e02053f25" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="6dad27c6-c9e5-4f97-a0c7-137e02053f25" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,11 +19,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://california-stage.tylerhost.net/efm/CourtRecordMDEService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="CourtRecordMDEService.xsd" MetadataType="Schema" ID="9f03e934-f084-41de-8bb0-968d7d48f499" SourceId="1" SourceUrl="https://california-stage.tylerhost.net/EFM/CourtRecordMDEService.svc?xsd=xsd0" />
-    <MetadataFile FileName="CourtRecordMdeService.wsdl" MetadataType="Wsdl" ID="75d9f037-cffc-4b69-b444-a6cf6d368a4f" SourceId="1" SourceUrl="https://california-stage.tylerhost.net/efm/CourtRecordMDEService.svc?wsdl" />
+    <MetadataFile FileName="CourtRecordMdeService1.wsdl" MetadataType="Wsdl" ID="4d2d4bb0-e08a-41a3-8b5d-e38ab59d18ea" SourceId="1" SourceUrl="https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc?wsdl" />
+    <MetadataFile FileName="CourtRecordMDEService1.xsd" MetadataType="Schema" ID="263dcea3-977b-429e-9e07-5f9f4fdcf1fa" SourceId="1" SourceUrl="https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CourtRecordMDEService.disco" MetadataType="Disco" ID="bac84099-14a1-4996-8994-a0fca11e3ec4" SourceId="1" SourceUrl="https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

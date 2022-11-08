@@ -14,6 +14,7 @@ using System.IO.Compression;
 using System.Collections.Generic;
 using Serilog;
 
+
 namespace FilingHostService
 {
     public class EFMClient
@@ -1237,7 +1238,7 @@ namespace FilingHostService
             client.ClientCredentials.ClientCertificate.Certificate = this.MessageSigningCertificate;
             return client;
         }
-
+        
         public CourtRecordMDEService.CourtRecordMDEServiceClient CreateRecordService()
         {
             var client = new CourtRecordMDEService.CourtRecordMDEServiceClient();

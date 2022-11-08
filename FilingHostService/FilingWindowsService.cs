@@ -1145,6 +1145,8 @@ namespace FilingHostService
                 _filingFailedPath = @ConfigurationManager.AppSettings.Get("filingFailedFolder");
                 _filingSuccessPath = @ConfigurationManager.AppSettings.Get("filingSuccessFolder");
                 //_filingStatutePath = @ConfigurationManager.AppSettings.Get("filingStatuteFolder");
+                Log.Information("{0}", ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+                    .FilePath);
                 _zipFolder = @ConfigurationManager.AppSettings.Get("zipFile");
                 _codeFolder = @ConfigurationManager.AppSettings.Get("codeFolder");
                 _courtLocations = new List<string>(@ConfigurationManager.AppSettings.Get("courtLocations").Split(new char[] { ';' }));
@@ -1291,6 +1293,10 @@ namespace FilingHostService
             iDayDelAge = Convert.ToInt32(ConfigurationManager.AppSettings["numDaysToKeepLogFiles"] ?? "0");
             cleanupFiles(Path.GetDirectoryName(@ConfigurationManager.AppSettings["ofsLogFile"]), iDayDelAge);
             Log.Information("Time: Hour: {0} Minute:{1}", System.DateTime.Now.Hour, System.DateTime.Now.Minute);
+            Log.Information("{0} {1} {2}", System.DateTime.Now.Hour == int.Parse(_hourToCheckCodes), System.DateTime.Now.Minute >= int.Parse(_minutesFrom), System.DateTime.Now.Minute <= int.Parse(_minutesTo));
+            Log.Information("{0} {1}", System.DateTime.Now.Hour, _hourToCheckCodes);
+            Log.Information("{0} {1}", System.DateTime.Now.Minute, _minutesFrom);
+            Log.Information("{0} {1}", System.DateTime.Now.Minute, _minutesTo);
             if (System.DateTime.Now.Hour == int.Parse(_hourToCheckCodes) && System.DateTime.Now.Minute >= int.Parse(_minutesFrom) && System.DateTime.Now.Minute <= int.Parse(_minutesTo))
             {
                 //Get new Tyler codes
@@ -1312,8 +1318,8 @@ namespace FilingHostService
                     }
 
                 }
-                
-                foreach (string courtLocation in allCourtLocations)
+                // _courtLocations or allCourtLocations
+                foreach (string courtLocation in _courtLocations)
                 {
                     var courtId = courtLocation.Replace(System.Environment.NewLine, "").Trim();
                     var location = @"\" + courtLocation.Replace(":", "").Replace(System.Environment.NewLine, "").Trim();

@@ -1,0 +1,9 @@
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\bin\Release\eSuite.Utils.eRest.dll
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\bin\Release\eSuite.Utils.eRest.pdb
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\bin\Release\Newtonsoft.Json.dll
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\bin\Release\Newtonsoft.Json.xml
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\obj\Release\eRest.csproj.AssemblyReference.cache
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\obj\Release\eRest.csproj.CoreCompileInputs.cache
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\obj\Release\eRest.csproj.CopyComplete
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\obj\Release\eSuite.Utils.eRest.dll
+C:\Users\jcamarena\source\repos\jcamarena86-esl_ofsservice-55ccf797ceeb\eRest\obj\Release\eSuite.Utils.eRest.pdb

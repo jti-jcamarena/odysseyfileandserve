@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="5xF7GFSH4ky7RRGUY7Hwl79tSGc=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="eQ1rSroSBfk5IbIW06yrfk8QOAEh91COQvuo1qYsYoU=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_CourtRecordMDEService">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_CourtRecordMDEService1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_CourtRecordMDEService</serializedValue>
+          <serializedValue>BasicHttpBinding_CourtRecordMDEService1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_CourtRecordMDEService1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_CourtRecordMDEService11">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_CourtRecordMDEService1</serializedValue>
+          <serializedValue>BasicHttpBinding_CourtRecordMDEService11</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_CourtRecordMDEService" contract="CourtRecordMDEService.CourtRecordMDEService" bindingType="basicHttpBinding" address="https://california-stage.tylerhost.net/EFM/CourtRecordMDEService.svc" bindingConfiguration="BasicHttpBinding_CourtRecordMDEService">
+    <endpoint name="BasicHttpBinding_CourtRecordMDEService1" contract="CourtRecordMDEService.CourtRecordMDEService" bindingType="basicHttpBinding" address="https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc" bindingConfiguration="BasicHttpBinding_CourtRecordMDEService1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://california-stage.tylerhost.net/EFM/CourtRecordMDEService.svc</serializedValue>
+          <serializedValue>https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -233,7 +233,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_CourtRecordMDEService</serializedValue>
+          <serializedValue>BasicHttpBinding_CourtRecordMDEService1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>CourtRecordMDEService.CourtRecordMDEService</serializedValue>
@@ -296,7 +296,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_CourtRecordMDEService</serializedValue>
+          <serializedValue>BasicHttpBinding_CourtRecordMDEService1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -306,10 +306,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BasicHttpBinding_CourtRecordMDEService1" contract="CourtRecordMDEService.CourtRecordMDEService" bindingType="basicHttpBinding" address="https://california-stage.tylerhost.net/EFM/CourtRecordMDEService.svc/test" bindingConfiguration="BasicHttpBinding_CourtRecordMDEService1">
+    <endpoint name="BasicHttpBinding_CourtRecordMDEService11" contract="CourtRecordMDEService.CourtRecordMDEService" bindingType="basicHttpBinding" address="https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc/test" bindingConfiguration="BasicHttpBinding_CourtRecordMDEService11">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://california-stage.tylerhost.net/EFM/CourtRecordMDEService.svc/test</serializedValue>
+          <serializedValue>https://california-efm-stage.tylertech.cloud/EFM/CourtRecordMDEService.svc/test</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -318,7 +318,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_CourtRecordMDEService1</serializedValue>
+          <serializedValue>BasicHttpBinding_CourtRecordMDEService11</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>CourtRecordMDEService.CourtRecordMDEService</serializedValue>
@@ -381,7 +381,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_CourtRecordMDEService1</serializedValue>
+          <serializedValue>BasicHttpBinding_CourtRecordMDEService11</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
