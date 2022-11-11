@@ -280,12 +280,12 @@ namespace FilingHostService
                                 Log.Information("275: Attorney Name: {0} {1} Bar: {2} GUID: {3} FirmID: {4}", attorneyType.FirstName, attorneyType.LastName, attorneyType.BarNumber, attorneyType.AttorneyID, attorneyType.FirmID);
                             }
                             Log.Information("277: System Attorney List: {0}", systemAttorneyList.Count);
-                            bool attrExists = systemAttorneyList.Exists(x => x.FirstName == eProsCfg.attorneyFirstName && x.LastName == eProsCfg.attorneyLastName && x.BarNumber == eProsCfg.barNumber);
+                            bool attrExists = systemAttorneyList.Exists(x => x.FirstName == eProsCfg.attorneyFirstName && x.LastName == eProsCfg.attorneyLastName && x.BarNumber == eProsCfg.barNumber.Trim());
                             Log.Information("278: Filing Attorney Exists ? {0}", attrExists);
                             if (attrExists == false)
                             {
                                 var firmID = systemAttorneyList.Find(x => x.BarNumber != null).FirmID;
-                                var createAttyResponse = _client.CreateAttorney(userResponse, eProsCfg.barNumber, eProsCfg.attorneyFirstName, eProsCfg.attorneyMiddleName, eProsCfg.attorneyLastName, firmID);
+                                var createAttyResponse = _client.CreateAttorney(userResponse, eProsCfg.barNumber.Trim(), eProsCfg.attorneyFirstName, eProsCfg.attorneyMiddleName, eProsCfg.attorneyLastName, firmID);
                                 //var createAttyResponse = _client.CreateAttorney(userResponse, "2012170141", "Rachel", "", "Eldringhoff	", firmID);
                                 Log.Information("283: createAttyResponse: {0}", createAttyResponse);
                                 attorneyID = createAttyResponse.StartsWith("err") ? "error" : createAttyResponse;

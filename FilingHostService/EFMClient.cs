@@ -295,7 +295,7 @@ namespace FilingHostService
                 OperationContext.Current.OutgoingMessageHeaders.Add(messageHeader);
                 FilingHostService.EFMFirmService.CreateAttorneyRequestType createAttorneyRequest = new FilingHostService.EFMFirmService.CreateAttorneyRequestType();
                 EFMFirmService.AttorneyType attorney = new EFMFirmService.AttorneyType();
-                attorney.BarNumber = attorneyBar;
+                attorney.BarNumber = attorneyBar.Trim();
                 attorney.FirstName = attorneyFirstName;
                 attorney.MiddleName = attorneyMiddleName;
                 attorney.LastName = attorneyLastName;
