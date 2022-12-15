@@ -1,4 +1,4 @@
-﻿// -------------------------------------------------------------------------------------------------------------------------------
+﻿// -------------------------------------------------------------------------------------ca------------------------------------------
 // eSeries Odyssey filing/notification services
 // Rev 1.0 by R.Short - BitLink 07/27/18
 //  . Initial design
@@ -223,6 +223,8 @@ namespace FilingHostService
                                             let caseNumber = children.Where(c => c.Name.LocalName.ToLower() == "casenumber").FirstOrDefault()
                                             let caseCourtLocation = children.Where(c => c.Name.LocalName.ToLower() == "casecourtlocation").FirstOrDefault()
                                             let caseDocketNumber = children.Where(c => c.Name.LocalName.ToLower() == "casedocketnumber").FirstOrDefault()
+                                            let caseTitle = children.Where(c => c.Name.LocalName.ToLower() == "casetitle").FirstOrDefault()
+                                            let caseInitialFilingID = children.Where(c => c.Name.LocalName.ToLower() == "caseinitialfilingid").FirstOrDefault()
                                             let filingDocID = children.Where(c => c.Name.LocalName.ToLower() == "filingdocid").FirstOrDefault()
                                             let barNumber = children.Where(c => c.Name.LocalName.ToLower() == "attybarnumber").FirstOrDefault()
                                             let attorneyLastName = children.Where(c => c.Name.LocalName.ToLower() == "attylastname").FirstOrDefault()
@@ -236,6 +238,8 @@ namespace FilingHostService
                                                 caseNumber = caseNumber?.Value,
                                                 caseCourtLocation = caseCourtLocation?.Value,
                                                 caseDocketNumber = caseDocketNumber?.Value,
+                                                caseTitle = caseTitle?.Value,
+                                                caseInitialFilingID = caseInitialFilingID?.Value,
                                                 barNumber = barNumber?.Value,
                                                 attorneyLastName = attorneyLastName?.Value,
                                                 attorneyFirstName = attorneyFirstName?.Value,
@@ -493,7 +497,7 @@ namespace FilingHostService
                                 var lastName_ = personName_?.Element("{http://niem.gov/niem/niem-core/2.0}PersonSurName")?.Value ?? "";
                                 defendantFullName = String.Format("{0} {1} {2}", firstName_, middleName_, lastName_) ?? "";
                                 Log.Information("487: defendantFullName: {0}", defendantFullName);
-
+                                Log.Information("500: initialFilingId:{0}; caseTitle:{1}", eProsCfg.caseInitialFilingID, eProsCfg.caseTitle);
                                 //TetCaseListTest
                                 //var getCaseListByPartyResponseTest = _client.GetCaseListByParty(userResponse, "dc:2nddor", "Michael", "Jordan");
                                 //Log.Information("getCaseListByPartyResponseTest {0}", getCaseListByPartyResponseTest);
@@ -508,10 +512,21 @@ namespace FilingHostService
                                 System.Xml.Linq.XElement getCaseListResponse = _client.GetCaseList(userResponse, courtLocation, eProsCfg.caseDocketNumber);
                                 Log.Information("GetCaseList: location: {0}; courtNumber: {1}", courtLocation, eProsCfg.caseDocketNumber);
                                 Log.Information("GetCaseList response: {0}", getCaseListResponse);
-                                var caseResponse = getCaseListResponse.Elements().Where(x => x.Name.LocalName.ToLower() == "criminalcase" || x.Name == "{urn:oasis:names:tc:legalxml-courtfiling:schema:xsd:CivilCase-4.0}CivilCase");
-
-                                Log.Information("caseResponse {0}", caseResponse);
-                                var filteredCriminalCaseResponse = caseResponse.Descendants().Where((x, idx) => x.Value.EndsWith(defendantFullName))?.FirstOrDefault()?.Parent;
+                                IEnumerable<XElement> caseResponse;
+                                XElement filteredCriminalCaseResponse;
+                                if (!string.IsNullOrEmpty(eProsCfg.caseTitle))
+                                {
+                                    caseResponse = getCaseListResponse.Descendants().Where(x => x.Name.LocalName == "CaseTitleText" && x.Value == eProsCfg.caseTitle);
+                                    filteredCriminalCaseResponse = caseResponse.FirstOrDefault().Parent;
+                                }
+                                else
+                                {
+                                    caseResponse = getCaseListResponse.Elements().Where(x => x.Name.LocalName.ToLower() == "criminalcase" || x.Name == "{urn:oasis:names:tc:legalxml-courtfiling:schema:xsd:CivilCase-4.0}CivilCase");
+                                    filteredCriminalCaseResponse = caseResponse.FirstOrDefault().Parent;
+                                }
+                                Log.Information("caseResponse {0}; filteredCaseResponse:{1}", caseResponse, filteredCriminalCaseResponse);
+                                //filteredCriminalCaseResponse = caseResponse.Descendants().Where((x, idx) => x.Value.EndsWith(defendantFullName))?.FirstOrDefault()?.Parent;
+                                //var filteredCriminalCaseResponse = caseResponse.Descendants().Where((x, idx) => x.Value.EndsWith(defendantFullName))?.FirstOrDefault()?.Parent;
                                 if (filteredCriminalCaseResponse == null)
                                 {
                                     Log.Information("filteredCriminalCaseResponse null try again");
@@ -520,10 +535,11 @@ namespace FilingHostService
                                 Log.Information("filteredCriminalCaseResponse: {0}", filteredCriminalCaseResponse);
                                 caseTitleText = getCaseListResponse.Descendants().Where(x => x.Name.LocalName.ToLower() == "casetitletext" && x.Value.EndsWith(defendantFullName))?.FirstOrDefault()?.Value ?? "";
                                 //caseTitleText = filteredCriminalCaseResponse.Elements().Where(x => x.Name.LocalName.ToLower() == "casetitletext")?.FirstOrDefault()?.Value ?? "";
-                                Log.Information("Case Title Text {0}", caseTitleText);
+                                Log.Information("Case Title Text {0} ; defendantFullName {1}", caseTitleText, defendantFullName);
                                 string caseTrackingId = getCaseListResponse.Descendants().Where(x => x.Name.LocalName.ToLower() == "casetrackingid")?.FirstOrDefault()?.Value ?? "";
-                                Log.Information("caseTrackingId: {0}", caseTrackingId);
+                                Log.Information("caseTrackingId first try: {0}", caseTrackingId);
                                 caseTrackingId = filteredCriminalCaseResponse.Descendants().Where(x => x.Name.LocalName.ToLower() == "casetrackingid")?.FirstOrDefault()?.Value ?? "";
+                                Log.Information("caseTrackingId second try: {0}", caseTrackingId);
                                 Log.Information("caseTrackingId {0} isNullOrEmpty: {1}", caseTrackingId, string.IsNullOrWhiteSpace(caseTrackingId));
                                 System.Xml.Linq.XElement getCaseResponse = _client.GetCase(userResponse, courtLocation, caseTrackingId, true);
                                 Log.Information("GetCase response: {0}", getCaseResponse);
