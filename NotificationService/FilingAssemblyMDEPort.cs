@@ -45,7 +45,7 @@ namespace NotificationService
         {
             Log.Information("***"); // add gap between log entries
             Log.Information("NotifyFilingReviewComplete request: {0} ; message {1}", request, request.NotifyFilingReviewCompleteRequestMessage);
-            
+
             /*
               if (request.NotifyFilingReviewCompleteRequestMessage != null)
                 Log.Information(request.NotifyFilingReviewCompleteRequestMessage?.ToString());
@@ -54,7 +54,7 @@ namespace NotificationService
             // Process client response message and forward to ePros API service
             Log.Information("ProcessResponse(request.NotifyFilingReviewCompleteRequestMessage)");
 
-           new NotifyFilingReviewCompleteResponseObj().ProcessResponse(request.NotifyFilingReviewCompleteRequestMessage);
+            new NotifyFilingReviewCompleteResponseObj().ProcessResponse(request.NotifyFilingReviewCompleteRequestMessage);
             Log.Information(String.Format("NotifyFilingReviewComplete request complete"));
 
             // Setup/Return receipt response envelope back to client
@@ -145,7 +145,7 @@ namespace NotificationService
             try
             {
                 // Test for valid inbound message                    
-                if ( xml == null )
+                if (xml == null)
                     throw new Exception("NotifyFilingReviewComplete inbound xml empty");
 
                 Log.Information("Processing NotifyFilingReviewCompleteRequestMessage");
@@ -296,7 +296,8 @@ namespace NotificationService
                     {
                         Log.Information(cIntResp.ToString());
                         bRetVal = true;
-                    } else // error!
+                    }
+                    else // error!
                         Log.Error(cIntResp.ToString());
                     Log.Information("Complete");
                 }
@@ -320,7 +321,8 @@ namespace NotificationService
                             messageId = String.Format(@"{0}-Notify", archiveFileDocketId);
                         WriteFile(path, messageId, data.ToString(), true);
                     }
-                } else
+                }
+                else
                     Log.Error("Inbound xml message empty, notify message not saved");
             }
 
@@ -445,6 +447,6 @@ namespace NotificationService
         public String statusCode { get; set; }
         public String statusText { get; set; }
     }
-    
+
     #endregion
 }
