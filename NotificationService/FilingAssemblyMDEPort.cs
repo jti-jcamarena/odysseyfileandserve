@@ -182,13 +182,14 @@ namespace NotificationService
                                        filingStatusText = el?.Element(ecfNamespace + "FilingStatus")?.Element(ncNamespace + "StatusDescriptionText")?.Value ?? "",
                                        filingStatusCode = el?.Element(ecfNamespace + "FilingStatus")?.Element(ecfNamespace + "FilingStatusCode")?.Value ?? "",
                                        filingReviewCommentsText = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "FilingReviewCommentsText")?.Value ?? "",
-                                       documentReviewDate = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewDate")?.Value ?? "",
-                                       documentReviewer = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewer")?.Value ?? "",
+                                       documentReviewDate = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewDate")?.Element(ncNamespace + "DateTime")?.Value ?? "",
+                                       documentReviewerGivenName = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewer")?.Element(ecfNamespace + "EntityPerson")?.Element(ncNamespace + "PersonName")?.Element(ncNamespace + "PersonGivenName")?.Value ?? "",
+                                       documentReviewerSurName = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewer")?.Element(ecfNamespace + "EntityPerson")?.Element(ncNamespace + "PersonName")?.Element(ncNamespace + "PersonSurName")?.Value ?? "",
                                        documentDescriptionText = el?.Element(tyler + "ReviewedLeadDocument")?.Element(ncNamespace + "DocumentDescriptionText")?.Value ?? "",
                                        documentFileControlID = el?.Element(tyler + "ReviewedLeadDocument")?.Element(ncNamespace + "DocumentFileControlID")?.Value ?? "",
                                        caseCategoryText = el?.Element(crimNamespace + "CriminalCase")?.Element(ncNamespace + "CaseCategoryText")?.Value ?? "",
                                        caseTrackingIdHash = el?.Element(crimNamespace + "CriminalCase")?.Element(jNamespace + "CaseAugmentation")?.Element(jNamespace + "CaseLineageCase")?.Element(ncNamespace + "CaseTrackingID")?.Value ?? "",
-                                       organizationIdentification = el?.Element(crimNamespace + "CriminalCase")?.Element(jNamespace + "CaseAugmentation")?.Element(jNamespace + "CaseCourt")?.Element(ncNamespace + "OrganizationIdentification")?.Value ?? ""
+                                       organizationIdentification = el?.Element(crimNamespace + "CriminalCase")?.Element(jNamespace + "CaseAugmentation")?.Element(jNamespace + "CaseCourt")?.Element(ncNamespace + "OrganizationIdentification")?.Element(ncNamespace + "IdentificationID")?.Value ?? ""
 
                                    })?.FirstOrDefault();
                 Log.Information("responseObj null check");
@@ -201,7 +202,7 @@ namespace NotificationService
                 Log.Information("responseObj.filingStatusCode {0}", responseObj?.filingStatusCode);
                 Log.Information("responseObj.filingReviewCommentsText {0}", responseObj?.filingReviewCommentsText);
                 Log.Information("responseObj.documentReviewDate {0}", responseObj?.documentReviewDate);
-                Log.Information("responseObj.documentReviewer {0}", responseObj?.documentReviewer);
+                Log.Information("responseObj.documentReviewer {0} {1}", responseObj?.documentReviewerGivenName, responseObj?.documentReviewerSurName);
                 Log.Information("responseObj.documentDescriptionText {0}", responseObj?.documentDescriptionText);
                 Log.Information("responseObj.documentFileControlID {0}", responseObj?.documentFileControlID);
                 Log.Information("responseObj.caseCategoryText {0}", responseObj?.caseCategoryText);
@@ -390,7 +391,8 @@ namespace NotificationService
         public String filingStatusCode { get; set; }
         public String filingReviewCommentsText { get; set; }
         public String documentReviewDate { get; set; }
-        public String documentReviewer { get; set; }
+        public String documentReviewerGivenName { get; set; }
+        public String documentReviewerSurName { get; set; }
         public String documentDescriptionText { get; set; }
         public String documentFileControlID { get; set; }
         public String caseCategoryText { get; set; }
@@ -419,7 +421,8 @@ namespace NotificationService
             filingStatusCode = "";
             filingReviewCommentsText = "";
             documentReviewDate = "";
-            documentReviewer = "";
+            documentReviewerGivenName = "";
+            documentReviewerSurName = "";
             documentDescriptionText = "";
             documentFileControlID = "";
             caseCategoryText = "";
