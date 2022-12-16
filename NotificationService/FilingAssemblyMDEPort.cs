@@ -188,7 +188,7 @@ namespace NotificationService
                                        documentFileControlID = el?.Element(tyler + "ReviewedLeadDocument")?.Element(ncNamespace + "DocumentFileControlID")?.Value ?? "",
                                        caseCategoryText = el?.Element(crimNamespace + "CriminalCase")?.Element(ncNamespace + "CaseCategoryText")?.Value ?? "",
                                        caseTrackingIdHash = el?.Element(crimNamespace + "CriminalCase")?.Element(jNamespace + "CaseAugmentation")?.Element(jNamespace + "CaseLineageCase")?.Element(ncNamespace + "CaseTrackingID")?.Value ?? "",
-                                       organizationIdentification = el?.Element(crimNamespace + "CriminalCase")?.Element(jNamespace + "CaseAugmentation")?.Element(jNamespace + "CaseCourt")?.Element(ncNamespace + "OrganizationIdentification")?.Value ?? "",
+                                       organizationIdentification = el?.Element(crimNamespace + "CriminalCase")?.Element(jNamespace + "CaseAugmentation")?.Element(jNamespace + "CaseCourt")?.Element(ncNamespace + "OrganizationIdentification")?.Value ?? ""
 
                                    })?.FirstOrDefault();
                 Log.Information("responseObj null check");
