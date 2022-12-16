@@ -182,6 +182,7 @@ namespace NotificationService
                                        filingStatusText = el?.Element(ecfNamespace + "FilingStatus")?.Element(ncNamespace + "StatusDescriptionText")?.Value ?? "",
                                        filingStatusCode = el?.Element(ecfNamespace + "FilingStatus")?.Element(ecfNamespace + "FilingStatusCode")?.Value ?? "",
                                        filingReviewCommentsText = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "FilingReviewCommentsText")?.Value ?? "",
+                                       rejectReasonText = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "RejectReasonText")?.Value ?? "",
                                        documentReviewDate = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewDate")?.Element(ncNamespace + "DateTime")?.Value ?? "",
                                        documentReviewerGivenName = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewer")?.Element(ecfNamespace + "EntityPerson")?.Element(ncNamespace + "PersonName")?.Element(ncNamespace + "PersonGivenName")?.Value ?? "",
                                        documentReviewerSurName = el?.Element(tyler + "ReviewedLeadDocument")?.Element(tyler + "DocumentReviewer")?.Element(ecfNamespace + "EntityPerson")?.Element(ncNamespace + "PersonName")?.Element(ncNamespace + "PersonSurName")?.Value ?? "",
@@ -200,7 +201,7 @@ namespace NotificationService
                 Log.Information("responseObj.caseDocketId {0}", responseObj?.caseDocketId);
                 Log.Information("responseObj.filingStatusText {0}", responseObj?.filingStatusText);
                 Log.Information("responseObj.filingStatusCode {0}", responseObj?.filingStatusCode);
-                Log.Information("responseObj.filingReviewCommentsText {0}", responseObj?.filingReviewCommentsText);
+                Log.Information("responseObj.filingReviewCommentsText {0} : {1}", responseObj?.filingReviewCommentsText, responseObj?.rejectReasonText);
                 Log.Information("responseObj.documentReviewDate {0}", responseObj?.documentReviewDate);
                 Log.Information("responseObj.documentReviewer {0} {1}", responseObj?.documentReviewerGivenName, responseObj?.documentReviewerSurName);
                 Log.Information("responseObj.documentDescriptionText {0}", responseObj?.documentDescriptionText);
@@ -390,6 +391,7 @@ namespace NotificationService
         public String filingStatusText { get; set; }
         public String filingStatusCode { get; set; }
         public String filingReviewCommentsText { get; set; }
+        public String rejectReasonText { get; set; }
         public String documentReviewDate { get; set; }
         public String documentReviewerGivenName { get; set; }
         public String documentReviewerSurName { get; set; }
@@ -420,6 +422,7 @@ namespace NotificationService
             filingStatusText = "";
             filingStatusCode = "";
             filingReviewCommentsText = "";
+            rejectReasonText = "";
             documentReviewDate = "";
             documentReviewerGivenName = "";
             documentReviewerSurName = "";
